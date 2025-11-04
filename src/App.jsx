@@ -1,121 +1,76 @@
 import SplitText from './SplitText';
-import Squares from './Squares';
+import SnowEffect from './SnowEffect';
+import ServiceSections from './components/ServiceSections';  // ← 이 부분 수정
 
 function App() {
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: '#0a0a0f',
-      overflow: 'hidden',
-      margin: 0,
-      padding: 0
-    }}>
-      <Squares
-        speed={0.3}
-        squareSize={60}
-        direction='diagonal'
-        borderColor='#09402C'
-        hoverFillColor='#404b3eff'
-      />
+    <div className="w-screen min-h-screen bg-gray-50 m-0 p-0 overflow-x-hidden">
+      {/* Hero Section with Image Background */}
+      <div className="relative w-screen h-screen overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/gomdol.jpg)',
+            filter: 'brightness(0.9)',
+          }}
+        />
 
-      <nav style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 20,
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1rem clamp(1rem, 5vw, 4rem)',
-        background: 'rgba(66, 92, 76, 0.3)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255,255,255,0.1)'
-      }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1.3rem',
-          color: '#fff',
-          fontSize: 'clamp(1.3rem, 2.5vw, 1.5rem)',
-          fontWeight: 600
-        }}>
-          <img src="/logo.png" alt="Yeobaek Logo" style={{ height: '30px' }} />
-          Yeobaek
-        </div>
-        <div style={{
-          display: 'flex',
-          gap: 'clamp(1rem, 3vw, 2rem)',
-          color: '#fff',
-          fontSize: 'clamp(0.9rem, 1.5vw, 1rem)'
-        }}>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none', opacity: 0.9, fontSize: '1rem' }}>Home</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none', opacity: 0.9, fontSize: '1rem' }}>LAB</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none', opacity: 0.9, fontSize: '1rem' }}>Service</a>
-          <a href="#" style={{ color: '#fff', textDecoration: 'none', opacity: 0.9, fontSize: '1rem' }}>About</a>
-        </div>
-      </nav>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0" /> 
 
-      <div style={{
-        position: 'relative',
-        zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        color: '#fff',
-        textAlign: 'center',
-        padding: '1rem'
-      }}>
-        <h1 style={{
-          fontSize: 'clamp(2rem, 8vw, 4.5rem)',
-          marginBottom: '1rem',
-          fontWeight: 700,
-          lineHeight: 1.5,
-          maxWidth: '900px',
-          padding: '0 1rem'
-        }}>
-          <SplitText text="Yeobaek Web" delay={50} />
-        </h1>
+        {/* Snow Effect */}
+        <SnowEffect count={50} />
+        
+        {/* Navigation */}
+        <nav className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center px-4 py-4 md:px-16 bg-emerald-900/30 backdrop-blur-xl border-b border-white/10">
+          <div className="flex items-center gap-5 text-white text-xl md:text-2xl font-semibold">
+            <img src="/logo.png" alt="Yeobaek Logo" className="h-8" />
+            Yeobaek
+          </div>
+          <div className="flex gap-4 md:gap-8 text-white text-sm md:text-base">
+            <a href="#home" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">Home</a>
+            <a href="#service" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">Service</a>
+            <a href="#about" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">About</a>
+          </div>
+        </nav>
 
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          marginTop: '2rem',
-          justifyContent: 'center'
-        }}>
-          <button style={{
-            background: '#fff',
-            color: '#000',
-            border: 'none',
-            padding: 'clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
-            borderRadius: '50px',
-            fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
-            fontWeight: 600,
-            cursor: 'pointer'
-          }}>
-            LAB 구경하기
-          </button>
-          <button style={{
-            background: 'transparent',
-            color: '#fff',
-            border: '1px solid rgba(255,255,255,0.2)',
-            padding: 'clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
-            borderRadius: '50px',
-            fontSize: 'clamp(0.9rem, 1.5vw, 1rem)',
-            fontWeight: 600,
-            cursor: 'pointer',
-            backdropFilter: 'blur(10px)'
-          }}>
-            Service 구경하기
-          </button>
+        {/* Hero Content */}
+        <div className="relative z-10 flex flex-col gap-7 items-center justify-center h-screen text-gray-600 text-center px-4 pt-20 md:items-end md:pr-32">
+          <h1 className="text-7xl md:text-8xl mb-4 font-bold leading-tight max-w-4xl">
+            <SplitText text="Yeobaek Web" delay={50} />
+          </h1>
+
+          <div className="flex flex-wrap gap-4 mt-8 justify-center md:justify-end">
+            <button
+              onClick={() => document.getElementById('service')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gray-300 text-black border-none px-6 py-3 md:px-10 md:py-4 rounded-full text-sm md:text-base font-semibold cursor-pointer transition-transform hover:scale-105"
+            >
+              Service 구경하기
+            </button>
+            <button
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-transparent text-gray-800 border border-gray-700 px-6 py-3 md:px-10 md:py-4 rounded-full text-sm md:text-base font-semibold cursor-pointer backdrop-blur-xl transition-all hover:scale-105 hover:border-gray-600"
+            >
+              About 구경하기
+            </button>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div 
+            className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
+            onClick={() => document.getElementById('service')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+          </div>
         </div>
+      </div>
+
+      {/* Service Sections */}
+      <div id="service">
+        <ServiceSections />
       </div>
     </div>
   );
