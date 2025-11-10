@@ -14,10 +14,9 @@ const ServiceSections = () => {
       {/* Our Mission Section */}
       <section className="py-28 md:py-40 px-5 md:px-10 bg-white">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-5xl md:text-7xl font-bold mb-10 text-gray-800 tracking-tight relative z-10">Our Mission</h2>
-          <p className="text-lg md:text-xl leading-relaxed text-gray-600 max-w-4xl mx-auto font-light relative z-10">
-            Our mission is to empower the scientific community with cutting-edge tools and services that accelerate discovery and improve lives. We strive to be a catalyst for innovation, providing the foundation upon which the next generation of scientific breakthroughs will be built.
-          </p>
+          <h2 className="text-5xl md:text-7xl font-bold mb-10 text-gray-800 tracking-tight relative z-10">Yeobaek Web은요..</h2>
+          <p className="text-[28px] md:text-[30px] leading-relaxed text-gray-600 max-w-4xl mx-auto font-light relative z-20 whitespace-nowrap"> {/*줄바꿈 제거*/}
+              문헌정보학을 기반으로 학과의 소통과 정보 공유, 동아리 활성화를 위해 만들어졌어요          </p>
         </div>
       </section>
 
@@ -28,13 +27,14 @@ const ServiceSections = () => {
           <div className="flex items-center gap-12 md:gap-20 flex-wrap">
             <div className="flex-1 min-w-[320px] rounded-[2rem] overflow-hidden min-h-[450px] flex items-center justify-center relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50 hover:bg-emerald-900/5">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/10 to-transparent"></div>
-              <div className="text-6xl md:text-7xl text-emerald-700/50 font-light tracking-wider relative z-10">600 × 400</div>
+              <img src="/chatbot_image.jpg" alt="백봇이 Chat Bot" className="w-full h-full object-cover relative z-10" />
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Service 1 : Automation Service</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Chat Bot : '백봇이'
+              </h2>
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
-                LLM기반 자동화 어시스턴트를 통한 챗봇 서비스, 리서치와 문서작업을 자동으로!
+               챗봇을 통해 질문하고, 원하는 정보를 찾을 수 있어요
               </p>
               <a href="#service1" className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10">
                 Learn More →
@@ -54,9 +54,9 @@ const ServiceSections = () => {
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Service 2 : Archive Service</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">디지털 아카이빙</h2>
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
-                yeobaek의 활동 산출물과 다양한 문서들을 체계적으로 아카이빙하고, 검색 및 활용을 위한 서비스!
+                yeobaek 및 전공 동아리들의 활동 산출물과 문서들을 체계적으로 아카이빙하고, 검색 및 활용을 위한 서비스!
               </p>
               <a href="#service2" className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10">
                 Learn More →
@@ -76,7 +76,7 @@ const ServiceSections = () => {
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Service 3 : AICuration Service</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">동아리 산출물 전시</h2>
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
                 개인 맞춤형 정보자료 추천 및 yeobaek 의 산출물 전시 기능!
               </p>
@@ -217,8 +217,8 @@ const ServiceSections = () => {
       <section className="py-28 md:py-40 px-5 md:px-10 bg-gray-50/50 relative">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20 md:mb-28">
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-800 tracking-tight ">Our History</h2>
-            <p className="text-xl md:text-2xl text-gray-500 font-light">A journey of innovation and growth.</p>
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-800 tracking-tight ">여백의 역사</h2>
+            <p className="text-xl md:text-2xl text-gray-500 font-light">여백의 시작부터 현재까지의 발전</p>
           </div>
 
           <div className="relative">
@@ -233,7 +233,7 @@ const ServiceSections = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
                   <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-5 tracking-tight relative z-10">2022</h3>
                   <p className="text-gray-600 text-lg md:text-xl font-light relative z-10">
-                    YB is founded with a mission to revolutionize diagnostic medicine.
+                    DB 프로그래밍 소모임 창설 "0과 1사이의 여백을 채우다"라는 의미
                   </p>
                 </div>
                 <div className="flex-shrink-0 w-14 h-14 rounded-full bg-emerald-800 flex items-center justify-center shadow-lg shadow-emerald-800/50 ring-4 ring-white relative z-20 md:absolute md:left-1/2 md:-translate-x-1/2">
@@ -262,18 +262,18 @@ const ServiceSections = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
                   <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-5 tracking-tight relative z-10">2023</h3>
                   <p className="text-gray-600 text-lg md:text-xl font-light relative z-10">
-                    Opened our first state-of-the-art laboratory facility.
+                    Python 기반 시각화, 데이터 분석 심화
                   </p>
                 </div>
               </div>
 
-              {/* 2024 */}
+              {/* 2025 */}
               <div className="flex flex-col md:flex-row items-center gap-10">
                 <div className="flex-1 text-right pr-0 md:pr-16 p-8 rounded-3xl bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:border-emerald-800/50 relative overflow-hidden z-[5]">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
-                  <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-5 tracking-tight relative z-10">2024</h3>
+                  <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-5 tracking-tight relative z-10">2025</h3>
                   <p className="text-gray-600 text-lg md:text-xl font-light relative z-10">
-                    Launched our flagship genetic sequencing service, achieving 99.9% accuracy.
+                    데이터 기반 서비스 기획, LLM활용 마이크로 서비스 개발
                   </p>
                 </div>
                 <div className="flex-shrink-0 w-14 h-14 rounded-full bg-emerald-800 flex items-center justify-center shadow-lg shadow-emerald-800/50 ring-4 ring-white relative z-20 md:absolute md:left-1/2 md:-translate-x-1/2">
@@ -286,26 +286,6 @@ const ServiceSections = () => {
                 </div>
                 <div className="flex-1 pl-0 md:pl-16"></div>
               </div>
-
-              {/* 2025 */}
-              <div className="flex flex-col md:flex-row items-center gap-10">
-                <div className="flex-1 text-left md:text-right pr-0 md:pr-16 order-2 md:order-1"></div>
-                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-emerald-800 flex items-center justify-center shadow-lg shadow-emerald-800/50 ring-4 ring-white relative z-20 md:absolute md:left-1/2 md:-translate-x-1/2">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                </div>
-                <div className="flex-1 text-left pl-0 md:pl-16 order-3 p-8 rounded-3xl bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:border-emerald-800/50 relative overflow-hidden z-[5]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
-                  <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-5 tracking-tight relative z-10">2025</h3>
-                  <p className="text-gray-600 text-lg md:text-xl font-light relative z-10">
-                    Expanded our operations to Asia, opening a new hub in Seoul.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -315,8 +295,8 @@ const ServiceSections = () => {
       <section className="py-28 md:py-40 px-5 md:px-10 bg-white">
         <div className="z-[9999]">
           <div className="text-center mb-20 md:mb-28">
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-800 tracking-tight">Our Core Values</h2>
-            <p className="text-xl md:text-2xl text-gray-500 font-light">The principles that guide our work.</p>
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-800 tracking-tight"> 여백의 가치 </h2>
+            <p className="text-xl md:text-2xl text-gray-500 font-light">여백은 이런 가치를 지향하고 있어요</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -330,9 +310,9 @@ const ServiceSections = () => {
                   <circle cx="12" cy="12" r="2"/>
                 </svg>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">Precision</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">정확</h3>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed font-light relative z-10">
-                We are committed to the highest standards of accuracy and reliability in every test we perform.
+                데이터 기반으로 사용자의 불편함을 정확하게 파악하고, 이를 해결할 수 있는 서비스를 기획합니다.
               </p>
             </div>
 
@@ -344,9 +324,9 @@ const ServiceSections = () => {
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                 </svg>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">Innovation</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">현실</h3>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed font-light relative z-10">
-                We constantly push the boundaries of science and technology to develop groundbreaking solutions.
+                서비스를 개발, 배포하며 실제 이용자의 요구를 만족시킵니다. 언제든지 사용 가능하며 피드백을 통해 서비스를 개선합니다.
               </p>
             </div>
 
@@ -361,9 +341,9 @@ const ServiceSections = () => {
                   <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                 </svg>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">Collaboration</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">협업</h3>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed font-light relative z-10">
-                We believe that the greatest discoveries are made when we work together with our partners and clients.
+                문헌정보학과 내 여러 동아리와 협업해 정보를 공유하고, 함께 성장합니다.
               </p>
             </div>
 
@@ -377,9 +357,9 @@ const ServiceSections = () => {
                   <path d="M16 8V4h4l-4 4"/>
                 </svg>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">Integrity</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">완전</h3>
               <p className="text-base md:text-lg text-gray-600 leading-relaxed font-light relative z-10">
-                We operate with unwavering ethics and transparency, earning the trust of those we serve.
+                기획부터 개발, 큐레이션과 고도화 기능까지 제공하며 all in one 의 완전한 서비스를 제공합니다.
               </p>
             </div>
           </div>
@@ -395,7 +375,7 @@ const ServiceSections = () => {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 md:gap-14 mb-12">
             <div className="flex flex-col gap-5">
-              <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-3 tracking-tight relative z-10">YB</h3>
+              <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-3 tracking-tight relative z-10">여백</h3>
               <p className="text-sm md:text-base text-gray-600 leading-relaxed font-light relative z-10">
                 Pioneering the future of scientific research and discovery.
               </p>
@@ -412,11 +392,10 @@ const ServiceSections = () => {
             </div>
 
             <div className="flex flex-col gap-5">
-              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight relative z-10">Company</h4>
+              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight relative z-10">Club</h4>
               <ul className="flex flex-col gap-3 list-none p-0 m-0">
                 <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">About Us</a></li>
                 <li><a href="#service" className="text-zinc-400 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-700 hover:translate-x-1 relative z-10">Services</a></li>
-                <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Careers</a></li>
                 <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Contact</a></li>
               </ul>
             </div>

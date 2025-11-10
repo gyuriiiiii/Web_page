@@ -7,9 +7,9 @@ function SnowEffect({ count = 50 }) {
     const createSnowflake = (id) => ({
       id,
       left: Math.random() * 100,
-      animationDuration: Math.random() * 3 + 5,
-      opacity: Math.random() * 0.6 + 0.4,
-      fontSize: Math.random() * 10 + 10,
+      animationDuration: Math.random() * 3 + 3,
+      opacity: Math.random() * 0.7 + 0.3,
+      fontSize: Math.random() * 30 + 30,
     });
 
     const initialSnowflakes = Array.from({ length: count }, (_, i) => createSnowflake(i));

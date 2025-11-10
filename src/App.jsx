@@ -1,6 +1,6 @@
 import SplitText from './SplitText';
 import SnowEffect from './SnowEffect';
-import ServiceSections from './components/ServiceSections';  // ← 이 부분 수정
+import ServiceSections from './components/ServiceSections'; 
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: 'url(/gomdol.jpg)',
-            filter: 'brightness(0.9)',
+            filter: 'brightness(0.95)',
           }}
         />
 
