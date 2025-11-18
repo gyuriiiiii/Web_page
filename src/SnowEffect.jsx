@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+const SN1 = "/SN1.png";
+const SN2 = "/SN2.png";
+
 function SnowEffect({ count = 50 }) {
   const [snowflakes, setSnowflakes] = useState([]);
 
@@ -28,7 +31,7 @@ function SnowEffect({ count = 50 }) {
     return () => clearInterval(interval);
   }, [count]);
 
-  const emojis = ["❄", "❇", "."];
+  const snowImages = [SN1, SN2];
 
   return (
     <>
@@ -78,7 +81,7 @@ function SnowEffect({ count = 50 }) {
 
       <div className="snow-root">
         {snowflakes.map((f) => {
-          const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+          const snowImage = snowImages[Math.floor(Math.random() * snowImages.length)];
           return (
             <div
               key={f.id}
@@ -86,20 +89,21 @@ function SnowEffect({ count = 50 }) {
               style={{
                 left: `${f.left}%`,
                 opacity: f.opacity,
-                fontSize: `${f.size}px`,
                 animation: `fall ${f.fallDuration}s linear ${f.fallDelay}s infinite`,
                 top: "-15vh"
               }}
             >
-              <span
+              <img
+                src={snowImage}
+                alt="snow"
                 className="emoji"
                 style={{
+                  width: `${f.size}px`,
+                  height: `${f.size}px`,
                   animation: `spin3d ${f.spinDuration}s linear infinite`,
                   transform: `rotateX(${f.spinX}deg) rotateY(${f.spinY}deg)`
                 }}
-              >
-                {emoji}
-              </span>
+              />
             </div>
           );
         })}
