@@ -5,10 +5,42 @@ const ServiceSections = () => {
   const navigate = useNavigate();
 
   return (
+    <div className="bg-white relative">
+      {/* Snow Animation */}
+      <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <img
+            key={`snow1-${i}`}
+            src="/SN1.png"
+            alt=""
+            className="absolute animate-snowfall"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${8 + Math.random() * 7}s`,
+              width: `${15 + Math.random() * 20}px`,
+              opacity: 0.6 + Math.random() * 0.4,
+            }}
+          />
+        ))}
+        {[...Array(15)].map((_, i) => (
+          <img
+            key={`snow2-${i}`}
+            src="/SN2.png"
+            alt=""
+            className="absolute animate-snowfall"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${8 + Math.random() * 7}s`,
+              width: `${15 + Math.random() * 20}px`,
+              opacity: 0.6 + Math.random() * 0.4,
+            }}
+          />
+        ))}
+      </div>
 
 
-
-    
     <div className="bg-white">
 
 
@@ -19,7 +51,7 @@ const ServiceSections = () => {
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-5xl md:text-7xl font-bold mb-10 text-gray-800 tracking-tight relative z-10">Yeobaek Web은요..</h2>
           <p className="text-[28px] md:text-[30px] leading-relaxed text-gray-600 max-w-4xl mx-auto font-light relative z-20 whitespace-nowrap"> {/*줄바꿈 제거*/}
-              문헌정보학을 기반으로 학과의 소통과 정보 공유, 동아리 활성화를 위해 만들어졌어요          </p>
+              문헌정보학을 기반으로 학과의 소통과 정보 공유, 전공 동아리 활성화를 위해 만들어졌어요          </p>
         </div>
       </section>
 
@@ -103,12 +135,12 @@ const ServiceSections = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
             {/* Service 1 Card */}
-            <div onClick={() => navigate('/lab/1')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('AI.png')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <img src="/LAB1.jpg" alt="LAB 1" className="w-12 h-12 object-contain" />
+                <img src="/AI.png" alt="LAB 1" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 1</h3>
@@ -123,7 +155,7 @@ const ServiceSections = () => {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <img src="/LAB2.jpg" alt="LAB 2" className="w-12 h-12 object-contain" />
+                <img src="/Archive.png" alt="LAB 2" className="w-12 h-12 object-contain" />
               </div>
 
 
@@ -139,7 +171,7 @@ const ServiceSections = () => {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
               
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <img src="/LAB3.jpg" alt="LAB 3" className="w-12 h-12 object-contain" />
+                <img src="/Curation.png" alt="LAB 3" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 3</h3>
@@ -154,7 +186,7 @@ const ServiceSections = () => {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <img src="/LAB4.jpg" alt="LAB 4" className="w-12 h-12 object-contain" />
+                <img src="/Infra.png" alt="LAB 4" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 4</h3>
@@ -169,7 +201,7 @@ const ServiceSections = () => {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <img src="/LAB5.jpg" alt="LAB 5" className="w-12 h-12 object-contain" />
+                <img src="/Compition.png" alt="LAB 5" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB  5</h3>
@@ -352,6 +384,22 @@ const ServiceSections = () => {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes snowfall {
+          0% {
+            transform: translateY(-10vh) translateX(0);
+          }
+          100% {
+            transform: translateY(100vh) translateX(50px);
+          }
+        }
+
+        .animate-snowfall {
+          animation: snowfall linear infinite;
+        }
+      `}</style>
+    </div>
     </div>
   );
 };
