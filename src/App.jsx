@@ -80,7 +80,7 @@ function HomePage() {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col gap-7 items-center justify-center h-screen text-gray-800 text-center px-4 -mt-16">
-          <h1 className="text-10xl md:text-5xl mb-4 font-bold leading-tight max-w-4xl">
+          <h1 className="text-12xl md:text-7xl mb-4 font-bold leading-tight max-w-4xl">
             <SplitText text="Yeobaek Web" delay={50} />
           </h1>
 
