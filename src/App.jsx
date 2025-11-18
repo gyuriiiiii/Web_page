@@ -55,7 +55,7 @@ function HomePage() {
         
         {/* Navigation */}
         <nav className="absolute top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-12 md:px-8 md:py-8 bg-emerald-800/40 backdrop-blur-xl border-b border-white/10">
-          <div className="flex items-center gap-5 text-white text-xl md:text-2xl font-semibold">
+          <div className="flex items-center gap-5 text-white text-xl md:text-2xl font-bold">
             <img src="/logo.png" alt="Yeobaek Logo" className="h-5" />
             Yeobaek
           </div>
