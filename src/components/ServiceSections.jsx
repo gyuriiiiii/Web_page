@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceSections = () => {
+  const navigate = useNavigate();
+
   return (
 
 
@@ -31,14 +34,14 @@ const ServiceSections = () => {
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Chat Bot : '백봇이'
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 tracking-tight relative z-10">Chat Bot : '여불이'
               </h2>
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
                챗봇을 통해 질문하고, 원하는 정보를 찾을 수 있어요
               </p>
-              <a href="#service1" className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10">
+              <button onClick={() => navigate('/chatbot')} className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10 bg-transparent border-none cursor-pointer">
                 Learn More →
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -50,7 +53,7 @@ const ServiceSections = () => {
           <div className="flex items-center gap-12 md:gap-20 flex-wrap md:flex-row-reverse">
             <div className="flex-1 min-w-[320px] rounded-[2rem] overflow-hidden min-h-[450px] flex items-center justify-center relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50 hover:bg-emerald-900/5">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/10 to-transparent"></div>
-              <div className="text-6xl md:text-7xl text-emerald-700/50 font-light tracking-wider relative z-10">600 × 400</div>
+              <img src="/archiving_image.jpg" alt="디지털 아카이빙" className="w-full h-full object-cover relative z-10" />
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
@@ -58,9 +61,9 @@ const ServiceSections = () => {
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
                 yeobaek 및 전공 동아리들의 활동 산출물과 문서들을 체계적으로 아카이빙하고, 검색 및 활용을 위한 서비스!
               </p>
-              <a href="#service2" className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10">
+              <button onClick={() => navigate('/archiving')} className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10 bg-transparent border-none cursor-pointer">
                 Learn More →
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -72,7 +75,7 @@ const ServiceSections = () => {
           <div className="flex items-center gap-12 md:gap-20 flex-wrap">
             <div className="flex-1 min-w-[320px] rounded-[2rem] overflow-hidden min-h-[450px] flex items-center justify-center relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50 hover:bg-emerald-900/5">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/10 to-transparent"></div>
-              <div className="text-6xl md:text-7xl text-emerald-700/50 font-light tracking-wider relative z-10">600 × 400</div>
+              <img src="/exhibition_image.jpg" alt="동아리 산출물 전시" className="w-full h-full object-cover relative z-10" />
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
@@ -80,9 +83,9 @@ const ServiceSections = () => {
               <p className="text-lg md:text-xl leading-relaxed text-gray-600 mb-8 font-light relative z-10">
                 개인 맞춤형 정보자료 추천 및 yeobaek 의 산출물 전시 기능!
               </p>
-              <a href="#service3" className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10">
+              <button onClick={() => navigate('/exhibition')} className="inline-flex items-center gap-2 text-emerald-700 text-lg font-medium no-underline transition-all hover:gap-3 hover:text-emerald-800 relative z-10 bg-transparent border-none cursor-pointer">
                 Learn More →
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -100,15 +103,12 @@ const ServiceSections = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
             {/* Service 1 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/1')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="m21 21-4.35-4.35"/>
-                </svg>
+                <img src="/LAB1.jpg" alt="LAB 1" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 1</h3>
@@ -118,15 +118,12 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 2 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/2')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <path d="M9 3v18"/>
-                </svg>
+                <img src="/LAB2.jpg" alt="LAB 2" className="w-12 h-12 object-contain" />
               </div>
 
 
@@ -137,15 +134,12 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 3 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/3')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
               
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <rect x="2" y="7" width="20" height="14" rx="2"/>
-                  <path d="M16 3v4M8 3v4M2 11h20"/>
-                </svg>
+                <img src="/LAB3.jpg" alt="LAB 3" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 3</h3>
@@ -155,15 +149,12 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 4 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/4')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M12 1v6m0 6v6M5.6 5.6l4.2 4.2m4.4 4.4l4.2 4.2M1 12h6m6 0h6M5.6 18.4l4.2-4.2m4.4-4.4l4.2-4.2"/>
-                </svg>
+                <img src="/LAB4.jpg" alt="LAB 4" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB 4</h3>
@@ -173,16 +164,12 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 5 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/5')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
               <div className="w-24 h-24 flex items-center justify-center mb-8 bg-emerald-800/30 rounded-3xl text-emerald-800 transition-all duration-500 group-hover:bg-emerald-800/40 group-hover:scale-110 group-hover:rotate-3 relative z-10">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
-                  <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
-                  <path d="M12 3v6"/>
-                </svg>
+                <img src="/LAB5.jpg" alt="LAB 5" className="w-12 h-12 object-contain" />
               </div>
 
               <h3 className="text-3xl md:text-4xl font-bold mb-5 text-gray-800 tracking-tight relative z-10">LAB  5</h3>
@@ -192,7 +179,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 6 Card */}
-            <div className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/6')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
@@ -365,66 +352,6 @@ const ServiceSections = () => {
           </div>
         </div>
       </section>
-
-    
-      {/* Footer */}
-      <footer className="py-16 md:py-24 px-5 md:px-10 rounded-t-[3rem] mt-20 md:mt-32 relative bg-white/80 backdrop-blur-3xl border-t border-emerald-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-t-[3rem]"></div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 md:gap-14 mb-12">
-            <div className="flex flex-col gap-5">
-              <h3 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-3 tracking-tight relative z-10">여백</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed font-light relative z-10">
-                Pioneering the future of scientific research and discovery.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-5">
-              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight relative z-10">Services</h4>
-              <ul className="flex flex-col gap-3 list-none p-0 m-0">
-                <li><a href="#service1" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Service 1</a></li>
-                <li><a href="#service2" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Service 2</a></li>
-                <li><a href="#service3" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Service 3</a></li>
-                <li><a href="#service-info" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Service Info</a></li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-5">
-              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight relative z-10">Club</h4>
-              <ul className="flex flex-col gap-3 list-none p-0 m-0">
-                <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">About Us</a></li>
-                <li><a href="#service" className="text-zinc-400 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-700 hover:translate-x-1 relative z-10">Services</a></li>
-                <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Contact</a></li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-5">
-              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight relative z-10">Legal</h4>
-              <ul className="flex flex-col gap-3 list-none p-0 m-0">
-                <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Privacy Policy</a></li>
-                <li><a href="#about" className="text-gray-600 no-underline text-sm md:text-base font-light transition-all hover:text-emerald-800 hover:translate-x-1 relative z-10">Terms of Service</a></li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col gap-5 relative z-10">
-              <h4 className="text-base md:text-lg font-bold text-gray-800 mb-3 tracking-tight">Stay Updated</h4>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed font-light">Subscribe to our newsletter for the latest updates.</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300/50 text-sm md:text-base text-gray-800 outline-none bg-white/50 backdrop-blur-sm focus:border-emerald-500/50 focus:bg-white placeholder:text-gray-400 transition-all"
-                />
-                <button className="w-12 h-12 rounded-xl border-none bg-gradient-to-br from-emerald-800 to-emerald-900 text-white text-xl cursor-pointer flex items-center justify-center flex-shrink-0 transition-all hover:translate-x-1 hover:scale-105 hover:shadow-lg hover:shadow-emerald-800/50">
-                  →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
