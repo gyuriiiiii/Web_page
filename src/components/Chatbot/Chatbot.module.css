@@ -4,10 +4,10 @@
   position: fixed;
   right: 24px;
   bottom: 24px;
-  padding: 12px 16px;
+  padding: 10px 14px;
   border-radius: 999px;
   border: none;
-  font-size: 29px;
+  font-size: 14px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   background: #2563eb;
@@ -113,6 +113,64 @@
   background: #e5e7eb;
   color: #111827;
   border-bottom-left-radius: 4px;
+}
+/* chatbot mascot avatar (1119 신규) */
+.messageRow {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.botRow {
+  flex-direction: row;      /* Bot: 왼쪽에 아이콘 */
+}
+
+.userRow {
+  flex-direction: row-reverse; /* User: 오른쪽 */
+}
+
+/* 아바타 */
+.chatAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* 상태 배지 */
+.statusBadge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  background: rgba(15, 23, 42, 0.16);
+  color: #e5e7eb;
+}
+
+/* 추천 질문 영역 */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 4px 8px;
+  border-top: 1px solid #e5e7eb;
+  background: #f3f4f6;
+}
+
+.suggestions button {
+  border: none;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.suggestions button:hover {
+  background: #d1d5db;
 }
 
 /* 메타 텍스트 */
