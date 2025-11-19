@@ -11,6 +11,7 @@ import LabDetail from './components/Lab2';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Chatbot from './components/Chatbot/Chatbot';
+import About from './components/About';
 
 function HomePage() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -62,7 +63,7 @@ function HomePage() {
           <div className="flex-1 flex justify-center gap-4 md:gap-8 text-white text-xl md:text-2xl">
             <a href="#home" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">Home</a>
             <a href="#service" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">Service</a>
-            <a href="#about" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">About</a>
+            <Link to="/about" className="text-white no-underline opacity-90 hover:opacity-100 transition-opacity">About</Link>
           </div>
           <div className="flex items-center gap-4 text-white text-xl md:text-2xl">
             <button
@@ -131,6 +132,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/chatbot" element={<ChatBotDetail />} />
         <Route path="/archiving" element={<ArchivingDetail />} />
         <Route path="/exhibition" element={<ExhibitionDetail />} />

@@ -6,41 +6,6 @@ const ServiceSections = () => {
 
   return (
     <div className="bg-white relative">
-      {/* Snow Animation */}
-      <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-        {[...Array(15)].map((_, i) => (
-          <img
-            key={`snow1-${i}`}
-            src="/SN1.png"
-            alt=""
-            className="absolute animate-snowfall"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${8 + Math.random() * 7}s`,
-              width: `${15 + Math.random() * 20}px`,
-              opacity: 0.6 + Math.random() * 0.4,
-            }}
-          />
-        ))}
-        {[...Array(15)].map((_, i) => (
-          <img
-            key={`snow2-${i}`}
-            src="/SN2.png"
-            alt=""
-            className="absolute animate-snowfall"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${8 + Math.random() * 7}s`,
-              width: `${15 + Math.random() * 20}px`,
-              opacity: 0.6 + Math.random() * 0.4,
-            }}
-          />
-        ))}
-      </div>
-
-
     <div className="bg-white">
 
 
@@ -85,7 +50,7 @@ const ServiceSections = () => {
           <div className="flex items-center gap-12 md:gap-20 flex-wrap md:flex-row-reverse">
             <div className="flex-1 min-w-[320px] rounded-[2rem] overflow-hidden min-h-[450px] flex items-center justify-center relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50 hover:bg-emerald-900/5">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/10 to-transparent"></div>
-              <img src="/archiving_image.jpg" alt="디지털 아카이빙" className="w-full h-full object-cover relative z-10" />
+              <img src="/public/digitalA.png" alt="디지털 아카이빙" className="w-full h-full object-cover relative z-10" />
             </div>
             <div className="flex-1 min-w-[320px] p-10 md:p-14 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-1 hover:border-emerald-800/50">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent rounded-[2rem]"></div>
@@ -385,20 +350,6 @@ const ServiceSections = () => {
         </div>
       </section>
 
-      <style jsx>{`
-        @keyframes snowfall {
-          0% {
-            transform: translateY(-10vh) translateX(0);
-          }
-          100% {
-            transform: translateY(100vh) translateX(50px);
-          }
-        }
-
-        .animate-snowfall {
-          animation: snowfall linear infinite;
-        }
-      `}</style>
     </div>
     </div>
   );
