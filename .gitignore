@@ -35,4 +35,9 @@ __pycache__/
 *.pyd
 .Python
 venv/
+venv_old_*/
 env/
+
+# Database
+*.sqlite3
+*.db
