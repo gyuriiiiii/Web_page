@@ -52,10 +52,13 @@ async function fetchWithRetry(url, options = {}, maxRetries = 2) {
   throw lastError;
 }
 
+// API URL 설정 (환경 변수 또는 기본값)
+const API_BASE_URL = import.meta.env.VITE_API_URL || "/api";
+
 // 백엔드(FastAPI)로 실제 요청 보내는 함수
 async function backendGetReply(userText) {
   try {
-    const res = await fetchWithRetry("/api/rag-chat", {
+    const res = await fetchWithRetry(`${API_BASE_URL}/rag-chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userText }),
