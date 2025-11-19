@@ -1,5 +1,5 @@
 // src/components/Chatbot/Chatbot.jsx
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Chatbot.module.css";
 
 // 백엔드(FastAPI)로 실제 요청 보내는 함수
