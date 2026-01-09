@@ -2,6 +2,7 @@
 
 import os
 import json
+import logging
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
@@ -11,10 +12,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, OpenAIError, APIError, APIConnectionError, RateLimitError, APITimeoutError
 
 import chromadb
 from chromadb.utils import embedding_functions
+
+# 로깅 설정
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # ================== 기본 설정 ==================
 
@@ -39,22 +47,45 @@ client = OpenAI(api_key=api_key)
 def get_rag_collection():
     """저장된 인덱스를 불러와서 컬렉션 객체를 리턴"""
     if not DB_DIR.exists():
-        raise RuntimeError(
-            f"RAG DB 디렉터리가 없습니다: {DB_DIR} (rag/build_index.py를 먼저 실행하세요)"
+        logger.error(f"RAG DB 디렉터리가 없습니다: {DB_DIR}")
+        raise HTTPException(
+            status_code=503,
+            detail="RAG 데이터베이스가 초기화되지 않았습니다. 관리자에게 문의하세요."
         )
 
-    chroma_client = chromadb.PersistentClient(path=str(DB_DIR))
+    try:
+        chroma_client = chromadb.PersistentClient(path=str(DB_DIR))
+    except Exception as e:
+        logger.error(f"ChromaDB 연결 실패: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail="데이터베이스 연결에 실패했습니다."
+        )
 
-    openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-        api_key=api_key,
-        model_name=EMBED_MODEL,
-    )
+    try:
+        openai_ef = embedding_functions.OpenAIEmbeddingFunction(
+            api_key=api_key,
+            model_name=EMBED_MODEL,
+        )
+    except Exception as e:
+        logger.error(f"OpenAI Embedding 함수 초기화 실패: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail="임베딩 서비스 초기화에 실패했습니다."
+        )
 
-    collection = chroma_client.get_or_create_collection(
-        name=COLLECTION_NAME,
-        embedding_function=openai_ef,
-    )
-    return collection
+    try:
+        collection = chroma_client.get_or_create_collection(
+            name=COLLECTION_NAME,
+            embedding_function=openai_ef,
+        )
+        return collection
+    except Exception as e:
+        logger.error(f"컬렉션 접근 실패: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail="데이터 컬렉션에 접근할 수 없습니다."
+        )
 
 
 def make_context_str(documents: List[str], metadatas: List[dict]) -> str:
@@ -93,13 +124,19 @@ def log_chat(user_message: str, reply: str, meta: Optional[dict] = None):
 
 app = FastAPI(title="Yeobaek Chat Backend")
 
-# CORS (프론트: http://localhost:5173 에서 접근, 1119 신규)
+# CORS 설정
+# 환경 변수로부터 허용할 origin 읽기 (프로덕션 환경 대응)
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],  # 필요한 메서드만 허용
+    allow_headers=["Content-Type", "Authorization"],  # 필요한 헤더만 허용
 )
 
 
@@ -124,9 +161,12 @@ def ping():
 # 1) 일반 LLM Chat (RAG X)
 @app.post("/api/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
+    if not req.message or not req.message.strip():
+        raise HTTPException(status_code=400, detail="메시지가 비어 있습니다.")
+
     try:
         completion = client.chat.completions.create(
-            model="gpt-4.1-mini",
+            model="gpt-4o-mini",  # 올바른 모델명으로 수정
             messages=[
                 {
                     "role": "system",
@@ -137,17 +177,46 @@ def chat(req: ChatRequest):
                 },
                 {"role": "user", "content": req.message},
             ],
+            timeout=30.0,  # 타임아웃 30초 설정
         )
         reply_text = completion.choices[0].message.content
         log_chat(
             user_message=req.message,
             reply=reply_text,
-            meta={"model": "gpt-4.1-mini", "source": "openai", "mode": "plain"},
+            meta={"model": "gpt-4o-mini", "source": "openai", "mode": "plain"},
         )
         return ChatResponse(reply=reply_text)
+
+    except RateLimitError as e:
+        logger.error(f"OpenAI Rate Limit 에러: {e}")
+        raise HTTPException(
+            status_code=429,
+            detail="요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요."
+        )
+    except APITimeoutError as e:
+        logger.error(f"OpenAI Timeout 에러: {e}")
+        raise HTTPException(
+            status_code=504,
+            detail="요청 시간이 초과되었습니다. 다시 시도해주세요."
+        )
+    except APIConnectionError as e:
+        logger.error(f"OpenAI 연결 에러: {e}")
+        raise HTTPException(
+            status_code=503,
+            detail="AI 서비스에 연결할 수 없습니다. 잠시 후 다시 시도해주세요."
+        )
+    except APIError as e:
+        logger.error(f"OpenAI API 에러: {e}")
+        raise HTTPException(
+            status_code=502,
+            detail="AI 서비스에서 오류가 발생했습니다."
+        )
     except Exception as e:
-        print("[ERROR] /api/chat:", e)
-        raise HTTPException(status_code=500, detail="OpenAI 호출 중 오류가 발생했습니다.")
+        logger.error(f"예상치 못한 에러 (/api/chat): {e}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail="답변 생성 중 예상치 못한 오류가 발생했습니다."
+        )
 
 
 # 2) RAG + LLM Chat(1119 신규)
@@ -166,10 +235,17 @@ def rag_chat(req: ChatRequest):
         collection = get_rag_collection()
 
         # 1) 벡터 검색 (Chroma가 내부적으로 임베딩 계산)
-        results = collection.query(
-            query_texts=[query],
-            n_results=4,  # 상위 4개 청크 사용
-        )
+        try:
+            results = collection.query(
+                query_texts=[query],
+                n_results=4,  # 상위 4개 청크 사용
+            )
+        except Exception as e:
+            logger.error(f"벡터 검색 실패: {e}")
+            raise HTTPException(
+                status_code=503,
+                detail="문서 검색에 실패했습니다."
+            )
 
         docs = results.get("documents", [[]])[0]
         metas = results.get("metadatas", [[]])[0]
@@ -206,13 +282,39 @@ def rag_chat(req: ChatRequest):
                 f"질문: {query}"
             )
 
-        completion = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_content},
-            ],
-        )
+        try:
+            completion = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_content},
+                ],
+                timeout=30.0,  # 타임아웃 30초 설정
+            )
+        except RateLimitError as e:
+            logger.error(f"OpenAI Rate Limit 에러: {e}")
+            raise HTTPException(
+                status_code=429,
+                detail="요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요."
+            )
+        except APITimeoutError as e:
+            logger.error(f"OpenAI Timeout 에러: {e}")
+            raise HTTPException(
+                status_code=504,
+                detail="요청 시간이 초과되었습니다. 다시 시도해주세요."
+            )
+        except APIConnectionError as e:
+            logger.error(f"OpenAI 연결 에러: {e}")
+            raise HTTPException(
+                status_code=503,
+                detail="AI 서비스에 연결할 수 없습니다. 잠시 후 다시 시도해주세요."
+            )
+        except APIError as e:
+            logger.error(f"OpenAI API 에러: {e}")
+            raise HTTPException(
+                status_code=502,
+                detail="AI 서비스에서 오류가 발생했습니다."
+            )
 
         reply_text = completion.choices[0].message.content
 
@@ -221,25 +323,29 @@ def rag_chat(req: ChatRequest):
             reply_text = fallback + "\n\n" + reply_text
 
         # 로그 기록
-        log_chat(
-            user_message=req.message,
-            reply=reply_text,
-            meta={
-                "model": "gpt-4o-mini",
-                "source": "openai",
-                "mode": "rag",
-                "docs_used": [m.get("source") for m in metas] if metas else [],
-            },
-        )
+        try:
+            log_chat(
+                user_message=req.message,
+                reply=reply_text,
+                meta={
+                    "model": "gpt-4o-mini",
+                    "source": "openai",
+                    "mode": "rag",
+                    "docs_used": [m.get("source") for m in metas] if metas else [],
+                },
+            )
+        except Exception as e:
+            logger.warning(f"로그 기록 실패 (무시): {e}")
 
         return ChatResponse(reply=reply_text)
 
     except HTTPException:
         raise
     except Exception as e:
-        print("[ERROR] /api/rag-chat:", e)
+        logger.error(f"예상치 못한 에러 (/api/rag-chat): {e}", exc_info=True)
         raise HTTPException(
-            status_code=500, detail="RAG 기반 답변 생성 중 오류가 발생했습니다."
+            status_code=500,
+            detail="RAG 기반 답변 생성 중 예상치 못한 오류가 발생했습니다."
         )
 
 

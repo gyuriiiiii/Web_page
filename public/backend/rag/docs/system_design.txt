@@ -39,4 +39,3 @@ Graph-RAG는 단순 chunk retrieval이 아니라 문서 간 semantic 관계를 �
 - KDC 온톨로지 → graph로 변환하여 실험
 - Yeobaek-bot의 의사결정 흐름 명세서 작성
 - HillMap, Automation, Recommender 기능 통합
-

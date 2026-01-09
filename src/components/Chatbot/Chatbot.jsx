@@ -2,18 +2,83 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Chatbot.module.css";
 
+// 타임아웃을 포함한 fetch 함수
+async function fetchWithTimeout(url, options = {}, timeout = 30000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    throw error;
+  }
+}
+
+// 재시도 로직을 포함한 fetch 함수
+async function fetchWithRetry(url, options = {}, maxRetries = 2) {
+  let lastError;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      // 타임아웃 30초로 설정
+      const response = await fetchWithTimeout(url, options, 30000);
+      return response;
+    } catch (error) {
+      lastError = error;
+
+      // AbortError (타임아웃) 또는 네트워크 오류인 경우에만 재시도
+      if (error.name === 'AbortError') {
+        console.warn(`Request timeout (attempt ${attempt + 1}/${maxRetries + 1})`);
+      } else if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+        console.warn(`Network error (attempt ${attempt + 1}/${maxRetries + 1}):`, error.message);
+      } else {
+        // 다른 에러는 즉시 throw
+        throw error;
+      }
+
+      // 마지막 시도가 아니면 1초 대기 후 재시도
+      if (attempt < maxRetries) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
+  }
+
+  throw lastError;
+}
+
+// API URL 설정 (환경 변수 또는 기본값)
+const API_BASE_URL = import.meta.env.VITE_API_URL || "/api";
+
 // 백엔드(FastAPI)로 실제 요청 보내는 함수
 async function backendGetReply(userText) {
   try {
-    const res = await fetch("/api/rag-chat", {
+    const res = await fetchWithRetry(`${API_BASE_URL}/rag-chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userText }),
-    });
+    }, 2); // 최대 2번 재시도
 
     if (!res.ok) {
-      console.error("API error status:", res.status);
-      return "⚠️ 서버에서 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+      console.error("API error status:", res.status, res.statusText);
+
+      // 상태 코드에 따른 구체적인 에러 메시지
+      if (res.status >= 500) {
+        return "⚠️ 서버에 일시적인 문제가 발생했습니다. 잠시 후 다시 시도해주세요.";
+      } else if (res.status === 404) {
+        return "⚠️ API 엔드포인트를 찾을 수 없습니다. 관리자에게 문의하세요.";
+      } else if (res.status === 400) {
+        return "⚠️ 잘못된 요청입니다. 메시지를 확인해주세요.";
+      } else if (res.status === 429) {
+        return "⚠️ 요청이 너무 많습니다. 잠시 후 다시 시도해주세요.";
+      } else {
+        return "⚠️ 서버에서 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+      }
     }
 
     const data = await res.json();
@@ -21,11 +86,20 @@ async function backendGetReply(userText) {
     if (data && typeof data.reply === "string") {
       return data.reply;
     } else {
+      console.error("Invalid response format:", data);
       return "⚠️ 서버 응답 형식이 예상과 다릅니다.";
     }
   } catch (err) {
     console.error("API call failed:", err);
-    return "⚠️ 서버와 연결할 수 없습니다. (네트워크 오류)";
+
+    // 에러 타입에 따른 구체적인 메시지
+    if (err.name === 'AbortError') {
+      return "⚠️ 요청 시간이 초과되었습니다. 네트워크 연결을 확인하거나 잠시 후 다시 시도해주세요.";
+    } else if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+      return "⚠️ 서버와 연결할 수 없습니다. 네트워크 연결을 확인해주세요.";
+    } else {
+      return "⚠️ 예상치 못한 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+    }
   }
 }
 
@@ -135,7 +209,7 @@ export default function Chatbot({
               {/* Bot일 때만 아바타 표시 */}
               {m.role === "bot" && (
                 <img
-                  src="/backend/image/mascot_chatbot.png"
+                  src="/mascot_chatbot.png"
                   alt="Bot Avatar"
                   className={styles.chatAvatar}
                 />
