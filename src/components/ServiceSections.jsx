@@ -35,16 +35,16 @@ const ServiceSection = () => {
 
   return (
     <section className="py-24 md:py-32 px-5 md:px-10 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full relative">
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+      <div className="max-w-5xl mx-auto w-full relative">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:gap-6 md:items-stretch">
           {/* Image - left half */}
-          <div className="w-full md:w-1/2 h-[500px] rounded-[2rem] overflow-hidden bg-white border-2 border-emerald-700/40 shadow-lg grid p-6">
+          <div className="w-full md:w-[46%] max-w-[520px] rounded-[2rem] overflow-hidden bg-white border-2 border-emerald-700/40 shadow-lg relative p-4 md:p-5 min-h-[320px]">
             {services.map((service, i) => (
               <img
                 key={i}
                 src={service.image}
                 alt={service.imageAlt}
-                className="col-start-1 row-start-1 w-full h-full object-contain transition-all duration-700 ease-in-out"
+                className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out"
                 style={{
                   opacity: currentIndex === i ? 1 : 0,
                   transform: `translateX(${(i - currentIndex) * 100}%)`,
@@ -54,11 +54,11 @@ const ServiceSection = () => {
           </div>
 
           {/* Text - right half */}
-          <div className="w-full md:w-auto md:max-w-[45%] rounded-[2rem] bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-lg grid overflow-hidden">
+          <div className="w-full md:w-[44%] max-w-[480px] rounded-[2rem] bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-lg grid overflow-hidden">
             {services.map((service, i) => (
               <div
                 key={i}
-                className="col-start-1 row-start-1 p-10 md:p-14 flex flex-col justify-center transition-all duration-700 ease-in-out"
+                className="col-start-1 row-start-1 p-8 md:p-12 flex flex-col justify-center transition-all duration-700 ease-in-out"
                 style={{
                   opacity: currentIndex === i ? 1 : 0,
                   transform: `translateX(${(i - currentIndex) * 100}%)`,
@@ -151,8 +151,8 @@ const ServiceSections = () => {
 
             <div className="flex flex-col lg:flex-row">
               {/* Left Info Panel */}
-              <div className="lg:w-[480px] bg-white px-8 md:px-10 py-10 md:py-14 flex flex-col items-center text-center border-b lg:border-b-0 lg:border-r border-emerald-200/50">
-                <img src="/backend/image/YB_logo.png" alt="여백" className="w-60 h-60 object-contain mb-6" />
+              <div className="lg:w-[420px] bg-white px-6 md:px-8 py-10 md:py-12 flex flex-col items-center text-center border-b lg:border-b-0 lg:border-r border-emerald-200/50">
+                <img src="/backend/image/YB_logo.png" alt="여백" className="w-48 h-48 object-contain mb-6" />
                 <h4 className="text-xl font-bold text-gray-800 mb-4">문헌정보학과 전공동아리 여백</h4>
                 <p className="text-gray-600 mb-6">여백은 박종도 교수님 산하의 정보학 기반 동아리 입니다. <br/> 정보학을 바탕으로 실제 서비스와 시스템을 기획, 설계, 개발해 이용자에게 적합한 정보서비스를 제공합니다.</p>
                 <p className="text-gray-900 text-sm">DB, Data Science, AI</p>
@@ -235,15 +235,15 @@ const ServiceSections = () => {
       <section className="py-28 md:py-40 px-5 md:px-10 bg-gray-50/50 relative" id="service-info">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent"></div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20 md:mb-28">
             <h2 className="text-5xl md:text-7xl font-bold mb-6 text-gray-800 tracking-tight">LAB Info</h2>
             <p className="text-xl md:text-2xl text-gray-500 font-light">yeobaek 의 LAB에 대한 정보</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-20">
             {/* Service 1 Card */}
-            <div onClick={() => navigate('/lab/1')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/1')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
@@ -258,7 +258,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 2 Card */}
-            <div onClick={() => navigate('/lab/2')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/2')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
@@ -274,7 +274,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 3 Card */}
-            <div onClick={() => navigate('/exhibition')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/exhibition')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
               
@@ -289,7 +289,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 4 Card */}
-            <div onClick={() => navigate('/lab/4')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/4')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
@@ -304,7 +304,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 5 Card */}
-            <div onClick={() => navigate('/lab/5')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/5')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
@@ -319,7 +319,7 @@ const ServiceSections = () => {
             </div>
 
             {/* Service 6 Card */}
-            <div onClick={() => navigate('/lab/6')} className="p-10 md:p-12 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
+            <div onClick={() => navigate('/lab/6')} className="p-8 md:p-10 rounded-[2rem] relative bg-white/80 backdrop-blur-3xl border-2 border-emerald-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.08)] flex flex-col items-center text-center cursor-pointer transition-all duration-500 hover:bg-emerald-900/5 hover:shadow-[0_8px_32px_rgba(6,95,70,0.2)] hover:-translate-y-2 hover:border-emerald-800/50 overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-800/15 to-transparent"></div>
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-700 to-emerald-800 scale-x-0 transition-transform duration-500 group-hover:scale-x-100"></div>
 
