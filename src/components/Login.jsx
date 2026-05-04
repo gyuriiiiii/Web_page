@@ -10,7 +10,6 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // 로그인 로직 추가 가능
-    console.log('Login attempt:', formData);
   };
 
   const handleChange = (e) => {
