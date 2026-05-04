@@ -116,7 +116,7 @@ export default function Chatbot({
       role: "bot",
       text:
         "안녕하세요! 😊\n" +
-        "저는 여백의 작은AI 백봇이에요.\n" +
+        "저는 여백의 작은AI 여불이에요.\n" +
         "여백 및 동아리에 관한 질문을 해 주세요!.",
     },
   ]);
